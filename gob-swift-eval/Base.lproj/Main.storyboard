@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="gob_swift_eval" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ir0-2J-ZA2">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ndR-h9-yPU">
+                                <rect key="frame" x="20" y="530" width="560" height="50"/>
+                                <color key="backgroundColor" red="0.1342291533946991" green="0.49742263555526733" blue="0.73429423570632935" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="yhg-vd-AJZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <state key="normal" title="Déposer sur la carte">
+                                    <color key="titleColor" red="0.92495459318161011" green="0.94122463464736938" blue="0.94532805681228638" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="addMarker:" destination="BYZ-38-t0r" eventType="touchUpInside" id="u81-lI-Ubi"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ndR-h9-yPU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="01d-r7-oYI"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ndR-h9-yPU" secondAttribute="bottom" constant="20" id="IXl-MF-vED"/>
+                            <constraint firstAttribute="trailing" secondItem="ir0-2J-ZA2" secondAttribute="trailing" id="PRW-Bi-Rj3"/>
+                            <constraint firstItem="ndR-h9-yPU" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="SVx-ac-92m"/>
+                            <constraint firstItem="ir0-2J-ZA2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="b7c-ay-9I3"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ir0-2J-ZA2" secondAttribute="bottom" id="uOV-LS-gcW"/>
+                            <constraint firstItem="ir0-2J-ZA2" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="x0R-3q-Deb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="deposeButton" destination="ndR-h9-yPU" id="5FY-jS-e9K"/>
+                        <outlet property="mapView" destination="ir0-2J-ZA2" id="UzZ-p8-nc2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="445" y="430"/>
+        </scene>
+    </scenes>
+</document>
