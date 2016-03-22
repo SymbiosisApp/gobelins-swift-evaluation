@@ -1,0 +1,6 @@
+framework module Pods_gob_swift_eval {
+  umbrella header "Pods-gob-swift-eval-umbrella.h"
+
+  export *
+  module * { export * }
+}
