@@ -14,6 +14,7 @@
 		18FB3B831C80507000017D1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18FB3B821C80507000017D1E /* Assets.xcassets */; };
 		18FB3B861C80507000017D1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18FB3B841C80507000017D1E /* LaunchScreen.storyboard */; };
 		18FB3B8E1C80AA4F00017D1E /* CustomLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FB3B8D1C80AA4F00017D1E /* CustomLocationManager.swift */; };
+		66E417181CA182A2004A9ADD /* Pedometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E417171CA182A2004A9ADD /* Pedometer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		18FB3B851C80507000017D1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18FB3B871C80507000017D1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18FB3B8D1C80AA4F00017D1E /* CustomLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLocationManager.swift; sourceTree = "<group>"; };
+		66E417171CA182A2004A9ADD /* Pedometer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pedometer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				18FB3B821C80507000017D1E /* Assets.xcassets */,
 				18FB3B841C80507000017D1E /* LaunchScreen.storyboard */,
 				18FB3B871C80507000017D1E /* Info.plist */,
+				66E417171CA182A2004A9ADD /* Pedometer.swift */,
 			);
 			path = "gob-swift-eval";
 			sourceTree = "<group>";
@@ -142,6 +145,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66E417181CA182A2004A9ADD /* Pedometer.swift in Sources */,
 				18FB3B7E1C80507000017D1E /* ViewController.swift in Sources */,
 				18C1462A1CA03E3B0064D230 /* MapItem.swift in Sources */,
 				18FB3B8E1C80AA4F00017D1E /* CustomLocationManager.swift in Sources */,

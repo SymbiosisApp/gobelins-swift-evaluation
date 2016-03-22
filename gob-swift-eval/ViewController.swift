@@ -18,6 +18,10 @@ class ViewController: UIViewController, CustomLocationManagerDelegate, MKMapView
     var userPoint: MKPointAnnotation = MKPointAnnotation()
     var mainButtonMode: String = "add"
     
+    
+    let customPedometer: CustomPedometer = CustomPedometer(useNatif: false)
+    
+    
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var deposeButton: UIButton!
 
@@ -38,6 +42,22 @@ class ViewController: UIViewController, CustomLocationManagerDelegate, MKMapView
         self.userPoint.title = "Me"
         self.userPoint.subtitle = "That's you !"
         self.mapView.addAnnotation(self.userPoint)
+        
+        
+        
+        let steps = self.customPedometer.getPedometerData(NSDate(), toDate: NSDate()).numberOfSteps
+        //let distance = self.customPedometer.getPedometerData(NSDate(), toDate: NSDate()).distance
+        //let currentCadence = self.customPedometer.getPedometerData(NSDate(), toDate: NSDate()).currentCadence
+        //let floorsAscended = self.customPedometer.getPedometerData(NSDate(), toDate: NSDate()).floorsAscended
+        //let floorsDescended = self.customPedometer.getPedometerData(NSDate(), toDate: NSDate()).floorsDescended
+        //let start = self.customPedometer.getPedometerData(NSDate(), toDate: NSDate()).startDate
+        //let end = self.customPedometer.getPedometerData(NSDate(), toDate: NSDate()).endDate
+        
+        print("------------steps :", steps);
+        //print("steps :", steps, "distance :", distance, "Cadence :",currentCadence, "Ascended", floorsAscended, "Descended", floorsDescended)
+        //print(start, " / ", end);
+        
+
 
     }
 
@@ -82,7 +102,7 @@ class ViewController: UIViewController, CustomLocationManagerDelegate, MKMapView
     func customLocationManager(manager: CustomLocationManager, didUpdateLocations locations: [CLLocation])
     {
         let location = locations[0].coordinate
-//        print("location udated \(location.latitude) - \(location.longitude)")
+        // print("location udated \(location.latitude) - \(location.longitude)")
         self.userLocation = locations[0].coordinate
         self.userPoint.coordinate = location
     }
@@ -130,7 +150,10 @@ class ViewController: UIViewController, CustomLocationManagerDelegate, MKMapView
     func mapView(mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
         print("------ \(mapView.centerCoordinate.latitude) - \(mapView.centerCoordinate.longitude)")
     }
-
+    
+    
+    
+    
     
 }
 
