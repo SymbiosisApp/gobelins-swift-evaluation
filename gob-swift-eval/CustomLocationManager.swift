@@ -65,7 +65,7 @@ class CustomLocationManager : NSObject, CLLocationManagerDelegate {
         self.customLocationUpdate([location])
         
         let nextUpdate = 5.3
-        timer = NSTimer.scheduledTimerWithTimeInterval(nextUpdate, target: self, selector: "fakeLocationUpdate", userInfo: nil, repeats: false)
+        timer = NSTimer.scheduledTimerWithTimeInterval(nextUpdate, target: self, selector: #selector(CustomLocationManager.fakeLocationUpdate), userInfo: nil, repeats: false)
     }
     
     
