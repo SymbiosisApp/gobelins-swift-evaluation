@@ -45,7 +45,7 @@ class ViewController: UIViewController, CustomLocationManagerDelegate, MKMapView
         
         
         
-        let steps = self.customPedometer.getPedometerData(NSDate(), toDate: NSDate()).numberOfSteps
+//        let steps = self.customPedometer.getPedometerData(NSDate(), toDate: NSDate()).numberOfSteps
         //let distance = self.customPedometer.getPedometerData(NSDate(), toDate: NSDate()).distance
         //let currentCadence = self.customPedometer.getPedometerData(NSDate(), toDate: NSDate()).currentCadence
         //let floorsAscended = self.customPedometer.getPedometerData(NSDate(), toDate: NSDate()).floorsAscended
@@ -53,7 +53,7 @@ class ViewController: UIViewController, CustomLocationManagerDelegate, MKMapView
         //let start = self.customPedometer.getPedometerData(NSDate(), toDate: NSDate()).startDate
         //let end = self.customPedometer.getPedometerData(NSDate(), toDate: NSDate()).endDate
         
-        print("------------steps :", steps);
+//        print("------------steps :", steps);
         //print("steps :", steps, "distance :", distance, "Cadence :",currentCadence, "Ascended", floorsAscended, "Descended", floorsDescended)
         //print(start, " / ", end);
         

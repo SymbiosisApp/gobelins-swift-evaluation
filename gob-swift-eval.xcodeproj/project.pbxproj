@@ -7,18 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		183CCD391CA35E0B00FB171D /* SocketIOClientSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 183CCD381CA35E0B00FB171D /* SocketIOClientSwift.framework */; };
+		183CCD3A1CA35E0B00FB171D /* SocketIOClientSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 183CCD381CA35E0B00FB171D /* SocketIOClientSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		18FB3B7C1C80507000017D1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FB3B7B1C80507000017D1E /* AppDelegate.swift */; };
 		18FB3B7E1C80507000017D1E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FB3B7D1C80507000017D1E /* ViewController.swift */; };
 		18FB3B811C80507000017D1E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18FB3B7F1C80507000017D1E /* Main.storyboard */; };
 		18FB3B831C80507000017D1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18FB3B821C80507000017D1E /* Assets.xcassets */; };
 		18FB3B861C80507000017D1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18FB3B841C80507000017D1E /* LaunchScreen.storyboard */; };
 		18FB3B8E1C80AA4F00017D1E /* CustomLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FB3B8D1C80AA4F00017D1E /* CustomLocationManager.swift */; };
-		5BCCA1AEA41CB729B2364CE8 /* Pods_gob_swift_eval.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33466DFB792FCFD184F0AF86 /* Pods_gob_swift_eval.framework */; };
 		66E417181CA182A2004A9ADD /* Pedometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E417171CA182A2004A9ADD /* Pedometer.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		183CCD3B1CA35E0B00FB171D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				183CCD3A1CA35E0B00FB171D /* SocketIOClientSwift.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		020F646642408C20C04A15DA /* Pods-gob-swift-eval.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gob-swift-eval.debug.xcconfig"; path = "Pods/Target Support Files/Pods-gob-swift-eval/Pods-gob-swift-eval.debug.xcconfig"; sourceTree = "<group>"; };
+		183CCD381CA35E0B00FB171D /* SocketIOClientSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SocketIOClientSwift.framework; path = Carthage/Build/iOS/SocketIOClientSwift.framework; sourceTree = "<group>"; };
 		18FB3B781C80507000017D1E /* gob-swift-eval.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "gob-swift-eval.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		18FB3B7B1C80507000017D1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18FB3B7D1C80507000017D1E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -27,8 +42,6 @@
 		18FB3B851C80507000017D1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18FB3B871C80507000017D1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18FB3B8D1C80AA4F00017D1E /* CustomLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLocationManager.swift; sourceTree = "<group>"; };
-		33466DFB792FCFD184F0AF86 /* Pods_gob_swift_eval.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_gob_swift_eval.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4DA556D84E7BB8D20F9DFCE8 /* Pods-gob-swift-eval.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gob-swift-eval.release.xcconfig"; path = "Pods/Target Support Files/Pods-gob-swift-eval/Pods-gob-swift-eval.release.xcconfig"; sourceTree = "<group>"; };
 		66E417171CA182A2004A9ADD /* Pedometer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pedometer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -37,7 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5BCCA1AEA41CB729B2364CE8 /* Pods_gob_swift_eval.framework in Frameworks */,
+				183CCD391CA35E0B00FB171D /* SocketIOClientSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -47,10 +60,9 @@
 		18FB3B6F1C80507000017D1E = {
 			isa = PBXGroup;
 			children = (
+				183CCD381CA35E0B00FB171D /* SocketIOClientSwift.framework */,
 				18FB3B7A1C80507000017D1E /* gob-swift-eval */,
 				18FB3B791C80507000017D1E /* Products */,
-				3F48164754CBC0ABA354BB66 /* Pods */,
-				8BBB3109841A3F3F081BC244 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -77,23 +89,6 @@
 			path = "gob-swift-eval";
 			sourceTree = "<group>";
 		};
-		3F48164754CBC0ABA354BB66 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				020F646642408C20C04A15DA /* Pods-gob-swift-eval.debug.xcconfig */,
-				4DA556D84E7BB8D20F9DFCE8 /* Pods-gob-swift-eval.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		8BBB3109841A3F3F081BC244 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				33466DFB792FCFD184F0AF86 /* Pods_gob_swift_eval.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -101,12 +96,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 18FB3B8A1C80507000017D1E /* Build configuration list for PBXNativeTarget "gob-swift-eval" */;
 			buildPhases = (
-				BCDF05C25977B539D3C5BBEE /* Check Pods Manifest.lock */,
 				18FB3B741C80507000017D1E /* Sources */,
 				18FB3B751C80507000017D1E /* Frameworks */,
 				18FB3B761C80507000017D1E /* Resources */,
-				8CABE267DBF9038BF98026EE /* Embed Pods Frameworks */,
-				B5BB3DAE5A2C8A1C0DD5F400 /* Copy Pods Resources */,
+				183CCD3B1CA35E0B00FB171D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -163,54 +156,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		8CABE267DBF9038BF98026EE /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-gob-swift-eval/Pods-gob-swift-eval-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B5BB3DAE5A2C8A1C0DD5F400 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-gob-swift-eval/Pods-gob-swift-eval-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BCDF05C25977B539D3C5BBEE /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		18FB3B741C80507000017D1E /* Sources */ = {
@@ -329,9 +274,12 @@
 		};
 		18FB3B8B1C80507000017D1E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 020F646642408C20C04A15DA /* Pods-gob-swift-eval.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "gob-swift-eval/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.deladonchamps.gob-swift-eval";
@@ -341,9 +289,12 @@
 		};
 		18FB3B8C1C80507000017D1E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4DA556D84E7BB8D20F9DFCE8 /* Pods-gob-swift-eval.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "gob-swift-eval/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.deladonchamps.gob-swift-eval";

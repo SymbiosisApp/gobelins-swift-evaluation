@@ -8,12 +8,14 @@
 
 import Foundation
 import CoreLocation
+import SocketIOClientSwift
 
 class CustomLocationManager : NSObject, CLLocationManagerDelegate {
     var useNatif: Bool
     var natifLocationManager: CLLocationManager?
     var natifLocationManagerStatus: CLAuthorizationStatus? = nil
     var currentFakeLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 48.872473, longitude: 2.387603)
+    var socket = SocketIOClient(socketURL: NSURL(string: "http://localhost:8000")!, options: [.Log(false), .ForcePolling(true)])
     weak var delegate: ViewController?
     weak var timer = NSTimer()
     
@@ -31,7 +33,29 @@ class CustomLocationManager : NSObject, CLLocationManagerDelegate {
                 self.natifLocationManager!.requestAlwaysAuthorization()
             }
         } else {
-            print(self.delegate)
+            
+            self.socket.on("connect") {data, ack in
+                print("socket connected")
+            }
+            
+            self.socket.on("UPDATE_ME_POSITION") {data, ack in
+                print("UPDATE_ME_POSITION")
+                let first = data[0] as! NSMutableDictionary
+                print(first)
+                var dict = [String : Any]()
+                for (key, value) in first {
+                    dict[key as! String] = value
+                }
+                let lat = dict["lat"] as! Double
+                let lng = dict["lng"] as! Double
+                print(lat)
+                print(lng)
+                self.currentFakeLocation.latitude = lat
+                self.currentFakeLocation.longitude = lng
+                self.fakeLocationUpdate()
+            }
+            
+            self.socket.connect()
             self.delegate?.customLocationManagerDidGetAuthorization(self)
         }
     }
@@ -52,10 +76,10 @@ class CustomLocationManager : NSObject, CLLocationManagerDelegate {
     }
     
     func fakeLocationUpdate () {
-        let addLat = (drand48() - 0.5) / 10000.0
-        let addLon = (drand48() - 0.5) / 10000.0
-        self.currentFakeLocation.latitude += addLat
-        self.currentFakeLocation.longitude += addLon
+//        let addLat = (drand48() - 0.5) / 10000.0
+//        let addLon = (drand48() - 0.5) / 10000.0
+//        self.currentFakeLocation.latitude += addLat
+//        self.currentFakeLocation.longitude += addLon
         let altitude = 40.0
         let course = 0.0
         let timestamp = NSDate()
@@ -64,8 +88,8 @@ class CustomLocationManager : NSObject, CLLocationManagerDelegate {
         
         self.customLocationUpdate([location])
         
-        let nextUpdate = 5.3
-        timer = NSTimer.scheduledTimerWithTimeInterval(nextUpdate, target: self, selector: "fakeLocationUpdate", userInfo: nil, repeats: false)
+//        let nextUpdate = 5.3
+//        timer = NSTimer.scheduledTimerWithTimeInterval(nextUpdate, target: self, selector: "fakeLocationUpdate", userInfo: nil, repeats: false)
     }
     
     
