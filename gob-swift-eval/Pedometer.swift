@@ -73,7 +73,6 @@ class CustomPedometer {
             
         }else {
             
-            
             //Get DATA
             let data = NSData(contentsOfURL: NSURL(string: "http://127.0.0.1:8080/pedometerData/")!)
             var jsonResult : AnyObject
