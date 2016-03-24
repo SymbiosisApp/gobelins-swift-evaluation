@@ -68,7 +68,6 @@ class ViewController: UIViewController, CustomLocationManagerDelegate, MKMapView
     }
     
     func setButtonMode(mode: String) {
-        print("setButtonMode \(mode)")
         if mode == "add" {
             self.deposeButton.backgroundColor = UIColor(colorLiteralRed: 0.2, green: 0.25, blue: 0.41, alpha: 1)
             self.deposeButton.setTitle("Add", forState: .Normal)
@@ -78,7 +77,7 @@ class ViewController: UIViewController, CustomLocationManagerDelegate, MKMapView
             self.deposeButton.setTitle("Center", forState: .Normal)
         } else
         if mode == "transit" {
-            self.deposeButton.backgroundColor = UIColor(colorLiteralRed: 0.11, green: 0.11, blue: 0.11, alpha: 1)
+            self.deposeButton.backgroundColor = UIColor(colorLiteralRed: 0.6, green: 0.6, blue: 0.6, alpha: 0.5)
             self.deposeButton.setTitle("", forState: .Normal)
         }
         self.mainButtonMode = mode
