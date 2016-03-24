@@ -15,7 +15,7 @@ class CustomLocationManager : NSObject, CLLocationManagerDelegate {
     var natifLocationManager: CLLocationManager?
     var natifLocationManagerStatus: CLAuthorizationStatus? = nil
     var currentFakeLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 48.872473, longitude: 2.387603)
-    var socket = SocketIOClient(socketURL: NSURL(string: "http://localhost:8000")!, options: [.Log(false), .ForcePolling(true)])
+    var socket = SocketIOClient(socketURL: NSURL(string: "http://192.168.1.75:8000")!, options: [.Log(false), .ForcePolling(true)])
     weak var delegate: ViewController?
     weak var timer = NSTimer()
     
