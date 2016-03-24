@@ -73,50 +73,58 @@ class CustomPedometer {
             
         }else {
             
+            
             //Get DATA
             let data = NSData(contentsOfURL: NSURL(string: "http://127.0.0.1:8080/pedometerData/")!)
+            
             var jsonResult : AnyObject
             
-            do {
-                jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: [])
+            if (data != nil){
                 
-                if let items = jsonResult as? NSArray {
-                    for item in items {
-                        print(item["numberOfSteps"]!!.integerValue);
-                        print(item["distance"]!!.integerValue);
-                        print(item["currentCadence"]!!.integerValue);
-                        print(item["floorsAscended"]!!.integerValue);
-                        print(item["floorsDescended"]!!.integerValue);
-                        print("-----------------");
-                        
-                        
-                        
-                        numberOfSteps = item["numberOfSteps"]!!.integerValue
-                        distance = 10
-                        
-                        let time = 2
-                        currentCadence = distance * time
-                        
-                        floorsAscended = 4
-                        floorsDescended = 2
-                        
-                        startDate = fromDate
-                        endDate = toDate
-                        
+                do {
+                    jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: [])
+                    //print(jsonResult[0])
+                    
+                    if let items = jsonResult as? NSArray {
+                        for item in items {
+                            print(item["numberOfSteps"]!!.integerValue);
+                            print(item["distance"]!!.integerValue);
+                            print(item["currentCadence"]!!.integerValue);
+                            print(item["floorsAscended"]!!.integerValue);
+                            print(item["floorsDescended"]!!.integerValue);
+                            print("-----------------");
+                            
+                            
+                            
+                            numberOfSteps = item["numberOfSteps"]!!.integerValue
+                            distance = 10
+                            
+                            let time = 2
+                            currentCadence = distance * time
+                            
+                            floorsAscended = 4
+                            floorsDescended = 2
+                            
+                            startDate = fromDate
+                            endDate = toDate
+                            
+                        }
                     }
+                    
+                } catch let error as NSError {
+                    print(error)
                 }
-                
-            } catch let error as NSError {
-                print(error)
+            }else{
+                print("error connection database (php)")
             }
-            
             //onComplete(CustomPedometerData())
         }
         
         return CustomPedometerData(numberOfSteps: numberOfSteps, distance: distance, currentCadence: currentCadence, floorsAscended: floorsAscended, floorsDescended: floorsDescended, startDate: startDate, endDate: endDate)
         
     }
-
+    
+    
     
 }
 

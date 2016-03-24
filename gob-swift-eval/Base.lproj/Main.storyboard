@@ -35,21 +35,42 @@
                                     <action selector="addMarker:" destination="BYZ-38-t0r" eventType="touchUpInside" id="u81-lI-Ubi"/>
                                 </connections>
                             </button>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z2L-JZ-juP">
+                                <rect key="frame" x="20" y="70" width="25" height="440"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kg4-OO-bde">
+                                        <rect key="frame" x="0.0" y="0.0" width="25" height="440"/>
+                                        <color key="backgroundColor" red="0.1342291534" green="0.4974226356" blue="0.73429423569999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vxe-as-2LQ">
+                                <rect key="frame" x="550" y="40" width="21" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ndR-h9-yPU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="01d-r7-oYI"/>
+                            <constraint firstItem="Vxe-as-2LQ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="7V4-Xu-qdb"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ndR-h9-yPU" secondAttribute="bottom" constant="20" id="IXl-MF-vED"/>
                             <constraint firstAttribute="trailing" secondItem="ir0-2J-ZA2" secondAttribute="trailing" id="PRW-Bi-Rj3"/>
                             <constraint firstItem="ndR-h9-yPU" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="SVx-ac-92m"/>
                             <constraint firstItem="ir0-2J-ZA2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="b7c-ay-9I3"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ir0-2J-ZA2" secondAttribute="bottom" id="uOV-LS-gcW"/>
                             <constraint firstItem="ir0-2J-ZA2" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="x0R-3q-Deb"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Vxe-as-2LQ" secondAttribute="trailing" constant="9" id="yku-nN-Fiy"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="deposeButton" destination="ndR-h9-yPU" id="5FY-jS-e9K"/>
+                        <outlet property="indexLabel" destination="Vxe-as-2LQ" id="RnX-TN-gdu"/>
                         <outlet property="mapView" destination="ir0-2J-ZA2" id="UzZ-p8-nc2"/>
+                        <outlet property="progressBar" destination="kg4-OO-bde" id="jGE-Wt-zki"/>
+                        <outlet property="progressContainer" destination="z2L-JZ-juP" id="Upi-xb-V2g"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
