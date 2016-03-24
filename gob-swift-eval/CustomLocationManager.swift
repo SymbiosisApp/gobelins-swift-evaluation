@@ -43,7 +43,7 @@ class CustomLocationManager : NSObject, CLLocationManagerDelegate {
                 let lng = dict["lng"] as! Double
 //                print(lat)
 //                print(lng)
-                print("UPDATE_ME_POSITION \(lat) \(lng)")
+//                print("UPDATE_ME_POSITION \(lat) \(lng)")
                 self.currentFakeLocation.latitude = lat
                 self.currentFakeLocation.longitude = lng
                 

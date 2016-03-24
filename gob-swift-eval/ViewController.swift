@@ -68,6 +68,7 @@ class ViewController: UIViewController, CustomLocationManagerDelegate, MKMapView
     }
     
     func setButtonMode(mode: String) {
+        print("setButtonMode \(mode)")
         if mode == "add" {
             self.deposeButton.backgroundColor = UIColor(colorLiteralRed: 0.2, green: 0.25, blue: 0.41, alpha: 1)
             self.deposeButton.setTitle("Add", forState: .Normal)
@@ -75,6 +76,10 @@ class ViewController: UIViewController, CustomLocationManagerDelegate, MKMapView
         if mode == "center" {
             self.deposeButton.backgroundColor = UIColor(colorLiteralRed: 0.11, green: 0.48, blue: 0.8, alpha: 1)
             self.deposeButton.setTitle("Center", forState: .Normal)
+        } else
+        if mode == "transit" {
+            self.deposeButton.backgroundColor = UIColor(colorLiteralRed: 0.11, green: 0.11, blue: 0.11, alpha: 1)
+            self.deposeButton.setTitle("", forState: .Normal)
         }
         self.mainButtonMode = mode
     }
@@ -94,6 +99,9 @@ class ViewController: UIViewController, CustomLocationManagerDelegate, MKMapView
         if mode == "center" {
             self.mapView.setCenterCoordinate(self.userLocation, animated: true)
             self.setButtonMode("add")
+        } else
+        if mode == "center" {
+            // Do nothing
         }
     }
     
@@ -138,24 +146,24 @@ class ViewController: UIViewController, CustomLocationManagerDelegate, MKMapView
     
     func mapView(mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
 //        print("\(mapView.centerCoordinate.latitude) - \(mapView.centerCoordinate.longitude)")
-//        let centerCoord = mapView.centerCoordinate
-//        let userCoord = CLLocation(latitude: self.userLocation.latitude, longitude: self.userLocation.longitude)
-//        let test = CLLocation(latitude: centerCoord.latitude, longitude: centerCoord.longitude)
-//        
-//        let distance = test.distanceFromLocation(userCoord)
-////        print(distance)
-//        if distance < 50 {
-//            self.setButtonMode("add")
-//        } else {
-//            self.setButtonMode("center")
-//        }
+        let centerCoord = mapView.centerCoordinate
+        let userCoord = CLLocation(latitude: self.userLocation.latitude, longitude: self.userLocation.longitude)
+        let test = CLLocation(latitude: centerCoord.latitude, longitude: centerCoord.longitude)
+        
+        let distance = test.distanceFromLocation(userCoord)
+        print("distance : \(distance)")
+        if distance < 50 {
+            self.setButtonMode("add")
+        } else {
+            self.setButtonMode("center")
+        }
     }
     
     func mapView(mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
 //        print("------ \(mapView.centerCoordinate.latitude) - \(mapView.centerCoordinate.longitude)")
-        print("change region")
+//        print("change region")
         
-        self.setButtonMode("center")
+        self.setButtonMode("transit")
     }
     
     

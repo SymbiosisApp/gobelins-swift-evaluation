@@ -109,7 +109,7 @@ public class WebSocket : NSObject, NSStreamDelegate {
     public var headers = [String: String]()
     public var voipEnabled = false
     public var selfSignedSSL = false
-    public var security: SSLSecurity?
+    private var security: SSLSecurity?
     public var enabledSSLCipherSuites: [SSLCipherSuite]?
     public var origin: String?
     public var isConnected :Bool {
@@ -167,8 +167,8 @@ public class WebSocket : NSObject, NSStreamDelegate {
     public func disconnect(forceTimeout forceTimeout: NSTimeInterval? = nil) {
         switch forceTimeout {
         case .Some(let seconds) where seconds > 0:
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(seconds * Double(NSEC_PER_SEC))), queue) { [weak self] in
-                self?.disconnectStream(nil)
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(seconds * Double(NSEC_PER_SEC))), queue) { [unowned self] in
+                self.disconnectStream(nil)
             }
             fallthrough
         case .None:
@@ -309,12 +309,13 @@ public class WebSocket : NSObject, NSStreamDelegate {
         let bytes = UnsafePointer<UInt8>(data.bytes)
         var timeout = 5000000 //wait 5 seconds before giving up
         writeQueue.addOperationWithBlock { [weak self] in
+            guard let this = self else { return }
             while !outStream.hasSpaceAvailable {
                 usleep(100) //wait until the socket is ready
                 timeout -= 100
                 if timeout < 0 {
-                    self?.cleanupStream()
-                    self?.doDisconnect(self?.errorWithDetail("write wait timed out", code: 2))
+                    this.cleanupStream()
+                    this.doDisconnect(this.errorWithDetail("write wait timed out", code: 2))
                     return
                 } else if outStream.streamError != nil {
                     return //disconnectStream will be called.
@@ -351,11 +352,7 @@ public class WebSocket : NSObject, NSStreamDelegate {
     }
     //disconnect the stream object
     private func disconnectStream(error: NSError?) {
-        if error == nil {
-            writeQueue.waitUntilAllOperationsAreFinished()
-        } else {
-            writeQueue.cancelAllOperations()
-        }
+        writeQueue.waitUntilAllOperationsAreFinished()
         cleanupStream()
         doDisconnect(error)
     }
@@ -817,7 +814,7 @@ public class WebSocket : NSObject, NSStreamDelegate {
     
 }
 
-public class SSLCert {
+private class SSLCert {
     var certData: NSData?
     var key: SecKeyRef?
     
@@ -828,7 +825,7 @@ public class SSLCert {
      
      - returns: a representation security object to be used with
      */
-    public init(data: NSData) {
+    init(data: NSData) {
         self.certData = data
     }
     
@@ -839,13 +836,13 @@ public class SSLCert {
      
      - returns: a representation security object to be used with
      */
-    public init(key: SecKeyRef) {
+    init(key: SecKeyRef) {
         self.key = key
     }
 }
 
-public class SSLSecurity {
-    public var validatedDN = true //should the domain name be validated?
+private class SSLSecurity {
+    var validatedDN = true //should the domain name be validated?
     
     var isReady = false //is the key processing done?
     var certificates: [NSData]? //the certificates
@@ -859,11 +856,10 @@ public class SSLSecurity {
     
     - returns: a representation security object to be used with
     */
-    public convenience init(usePublicKeys: Bool = false) {
+    convenience init(usePublicKeys: Bool = false) {
         let paths = NSBundle.mainBundle().pathsForResourcesOfType("cer", inDirectory: ".")
         
-        let certs = paths.reduce([SSLCert]()) { (certs: [SSLCert], path: String) -> [SSLCert] in
-            var certs = certs
+        let certs = paths.reduce([SSLCert]()) { (var certs: [SSLCert], path: String) -> [SSLCert] in
             if let data = NSData(contentsOfFile: path) {
                 certs.append(SSLCert(data: data))
             }
@@ -881,13 +877,12 @@ public class SSLSecurity {
      
      - returns: a representation security object to be used with
      */
-    public init(certs: [SSLCert], usePublicKeys: Bool) {
+    init(certs: [SSLCert], usePublicKeys: Bool) {
         self.usePublicKeys = usePublicKeys
         
         if self.usePublicKeys {
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,0)) {
-                let pubKeys = certs.reduce([SecKeyRef]()) { (pubKeys: [SecKeyRef], cert: SSLCert) -> [SecKeyRef] in
-                    var pubKeys = pubKeys
+                let pubKeys = certs.reduce([SecKeyRef]()) { (var pubKeys: [SecKeyRef], cert: SSLCert) -> [SecKeyRef] in
                     if let data = cert.certData where cert.key == nil {
                         cert.key = self.extractPublicKey(data)
                     }
@@ -901,8 +896,7 @@ public class SSLSecurity {
                 self.isReady = true
             }
         } else {
-            let certificates = certs.reduce([NSData]()) { (certificates: [NSData], cert: SSLCert) -> [NSData] in
-                var certificates = certificates
+            let certificates = certs.reduce([NSData]()) { (var certificates: [NSData], cert: SSLCert) -> [NSData] in
                 if let data = cert.certData {
                     certificates.append(data)
                 }
@@ -921,7 +915,7 @@ public class SSLSecurity {
      
      - returns: if the key was successfully validated
      */
-    public func isValid(trust: SecTrustRef, domain: String?) -> Bool {
+    func isValid(trust: SecTrustRef, domain: String?) -> Bool {
         
         var tries = 0
         while(!self.isReady) {
@@ -1016,8 +1010,7 @@ public class SSLSecurity {
      - returns: the certificate chain for the trust
      */
     func certificateChainForTrust(trust: SecTrustRef) -> [NSData] {
-        let certificates = (0..<SecTrustGetCertificateCount(trust)).reduce([NSData]()) { (certificates: [NSData], index: Int) -> [NSData] in
-            var certificates = certificates
+        let certificates = (0..<SecTrustGetCertificateCount(trust)).reduce([NSData]()) { (var certificates: [NSData], index: Int) -> [NSData] in
             let cert = SecTrustGetCertificateAtIndex(trust, index)
             certificates.append(SecCertificateCopyData(cert!))
             return certificates
@@ -1035,8 +1028,7 @@ public class SSLSecurity {
      */
     func publicKeyChainForTrust(trust: SecTrustRef) -> [SecKeyRef] {
         let policy = SecPolicyCreateBasicX509()
-        let keys = (0..<SecTrustGetCertificateCount(trust)).reduce([SecKeyRef]()) { (keys: [SecKeyRef], index: Int) -> [SecKeyRef] in
-            var keys = keys
+        let keys = (0..<SecTrustGetCertificateCount(trust)).reduce([SecKeyRef]()) { (var keys: [SecKeyRef], index: Int) -> [SecKeyRef] in
             let cert = SecTrustGetCertificateAtIndex(trust, index)
             if let key = extractPublicKeyFromCert(cert!, policy: policy) {
                 keys.append(key)
