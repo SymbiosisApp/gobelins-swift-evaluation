@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		183CCD391CA35E0B00FB171D /* SocketIOClientSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 183CCD381CA35E0B00FB171D /* SocketIOClientSwift.framework */; };
 		183CCD3A1CA35E0B00FB171D /* SocketIOClientSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 183CCD381CA35E0B00FB171D /* SocketIOClientSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		183CCD3D1CA3F4BB00FB171D /* SocketSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183CCD3C1CA3F4BB00FB171D /* SocketSingleton.swift */; };
 		18FB3B7C1C80507000017D1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FB3B7B1C80507000017D1E /* AppDelegate.swift */; };
 		18FB3B7E1C80507000017D1E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FB3B7D1C80507000017D1E /* ViewController.swift */; };
 		18FB3B811C80507000017D1E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18FB3B7F1C80507000017D1E /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 
 /* Begin PBXFileReference section */
 		183CCD381CA35E0B00FB171D /* SocketIOClientSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SocketIOClientSwift.framework; path = Carthage/Build/iOS/SocketIOClientSwift.framework; sourceTree = "<group>"; };
+		183CCD3C1CA3F4BB00FB171D /* SocketSingleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketSingleton.swift; sourceTree = "<group>"; };
 		18FB3B781C80507000017D1E /* gob-swift-eval.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "gob-swift-eval.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		18FB3B7B1C80507000017D1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18FB3B7D1C80507000017D1E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 			children = (
 				18FB3B7B1C80507000017D1E /* AppDelegate.swift */,
 				18FB3B7D1C80507000017D1E /* ViewController.swift */,
+				183CCD3C1CA3F4BB00FB171D /* SocketSingleton.swift */,
 				18FB3B8D1C80AA4F00017D1E /* CustomLocationManager.swift */,
 				18FB3B7F1C80507000017D1E /* Main.storyboard */,
 				18FB3B821C80507000017D1E /* Assets.xcassets */,
@@ -162,6 +165,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				183CCD3D1CA3F4BB00FB171D /* SocketSingleton.swift in Sources */,
 				66E417181CA182A2004A9ADD /* Pedometer.swift in Sources */,
 				18FB3B7E1C80507000017D1E /* ViewController.swift in Sources */,
 				18FB3B8E1C80AA4F00017D1E /* CustomLocationManager.swift in Sources */,

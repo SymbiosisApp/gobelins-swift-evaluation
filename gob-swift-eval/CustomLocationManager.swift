@@ -8,14 +8,13 @@
 
 import Foundation
 import CoreLocation
-import SocketIOClientSwift
 
 class CustomLocationManager : NSObject, CLLocationManagerDelegate {
     var useNatif: Bool
     var natifLocationManager: CLLocationManager?
     var natifLocationManagerStatus: CLAuthorizationStatus? = nil
     var currentFakeLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 48.872473, longitude: 2.387603)
-    var socket = SocketIOClient(socketURL: NSURL(string: "http://192.168.1.75:8000")!, options: [.Log(false), .ForcePolling(true)])
+    var socket = Socket.sharedInstance
     weak var delegate: ViewController?
     weak var timer = NSTimer()
     
@@ -34,28 +33,23 @@ class CustomLocationManager : NSObject, CLLocationManagerDelegate {
             }
         } else {
             
-            self.socket.on("connect") {data, ack in
-                print("socket connected")
-            }
-            
-            self.socket.on("UPDATE_ME_POSITION") {data, ack in
-                print("UPDATE_ME_POSITION")
+            self.socket.io.on("UPDATE_ME_POSITION") {data, ack in
                 let first = data[0] as! NSMutableDictionary
-                print(first)
                 var dict = [String : Any]()
                 for (key, value) in first {
                     dict[key as! String] = value
                 }
                 let lat = dict["lat"] as! Double
                 let lng = dict["lng"] as! Double
-                print(lat)
-                print(lng)
+//                print(lat)
+//                print(lng)
+                print("UPDATE_ME_POSITION \(lat) \(lng)")
                 self.currentFakeLocation.latitude = lat
                 self.currentFakeLocation.longitude = lng
+                
                 self.fakeLocationUpdate()
             }
             
-            self.socket.connect()
             self.delegate?.customLocationManagerDidGetAuthorization(self)
         }
     }

@@ -93,6 +93,7 @@ class ViewController: UIViewController, CustomLocationManagerDelegate, MKMapView
         } else
         if mode == "center" {
             self.mapView.setCenterCoordinate(self.userLocation, animated: true)
+            self.setButtonMode("add")
         }
     }
     
@@ -104,6 +105,9 @@ class ViewController: UIViewController, CustomLocationManagerDelegate, MKMapView
         let location = locations[0].coordinate
         // print("location udated \(location.latitude) - \(location.longitude)")
         self.userLocation = locations[0].coordinate
+        if self.mainButtonMode == "add" {
+            self.mapView.setCenterCoordinate(self.userLocation, animated: false)
+        }
         self.userPoint.coordinate = location
     }
     
@@ -133,22 +137,25 @@ class ViewController: UIViewController, CustomLocationManagerDelegate, MKMapView
     }
     
     func mapView(mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        print("\(mapView.centerCoordinate.latitude) - \(mapView.centerCoordinate.longitude)")
-        let centerCoord = mapView.centerCoordinate
-        let userCoord = CLLocation(latitude: self.userLocation.latitude, longitude: self.userLocation.longitude)
-        let test = CLLocation(latitude: centerCoord.latitude, longitude: centerCoord.longitude)
-        
-        let distance = test.distanceFromLocation(userCoord)
-        print(distance)
-        if distance < 200 {
-            self.setButtonMode("add")
-        } else {
-            self.setButtonMode("center")
-        }
+//        print("\(mapView.centerCoordinate.latitude) - \(mapView.centerCoordinate.longitude)")
+//        let centerCoord = mapView.centerCoordinate
+//        let userCoord = CLLocation(latitude: self.userLocation.latitude, longitude: self.userLocation.longitude)
+//        let test = CLLocation(latitude: centerCoord.latitude, longitude: centerCoord.longitude)
+//        
+//        let distance = test.distanceFromLocation(userCoord)
+////        print(distance)
+//        if distance < 50 {
+//            self.setButtonMode("add")
+//        } else {
+//            self.setButtonMode("center")
+//        }
     }
     
     func mapView(mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
-        print("------ \(mapView.centerCoordinate.latitude) - \(mapView.centerCoordinate.longitude)")
+//        print("------ \(mapView.centerCoordinate.latitude) - \(mapView.centerCoordinate.longitude)")
+        print("change region")
+        
+        self.setButtonMode("center")
     }
     
     
