@@ -80,7 +80,6 @@ class CustomPedometer {
             
             do {
                 jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: [])
-                //print(jsonResult[0])
                 
                 if let items = jsonResult as? NSArray {
                     for item in items {
@@ -107,7 +106,6 @@ class CustomPedometer {
                         
                     }
                 }
-                
                 
             } catch let error as NSError {
                 print(error)
