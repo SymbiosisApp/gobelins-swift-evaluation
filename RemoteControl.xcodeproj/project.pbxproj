@@ -36,7 +36,7 @@
 /* Begin PBXFileReference section */
 		183CCD381CA35E0B00FB171D /* SocketIOClientSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SocketIOClientSwift.framework; path = Carthage/Build/iOS/SocketIOClientSwift.framework; sourceTree = "<group>"; };
 		183CCD3C1CA3F4BB00FB171D /* SocketSingleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketSingleton.swift; sourceTree = "<group>"; };
-		18FB3B781C80507000017D1E /* gob-swift-eval.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "gob-swift-eval.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		18FB3B781C80507000017D1E /* RemoteControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RemoteControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18FB3B7B1C80507000017D1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18FB3B7D1C80507000017D1E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		18FB3B801C80507000017D1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -71,7 +71,7 @@
 		18FB3B791C80507000017D1E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				18FB3B781C80507000017D1E /* gob-swift-eval.app */,
+				18FB3B781C80507000017D1E /* RemoteControl.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,9 +95,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		18FB3B771C80507000017D1E /* gob-swift-eval */ = {
+		18FB3B771C80507000017D1E /* RemoteControl */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 18FB3B8A1C80507000017D1E /* Build configuration list for PBXNativeTarget "gob-swift-eval" */;
+			buildConfigurationList = 18FB3B8A1C80507000017D1E /* Build configuration list for PBXNativeTarget "RemoteControl" */;
 			buildPhases = (
 				18FB3B741C80507000017D1E /* Sources */,
 				18FB3B751C80507000017D1E /* Frameworks */,
@@ -108,9 +108,9 @@
 			);
 			dependencies = (
 			);
-			name = "gob-swift-eval";
+			name = RemoteControl;
 			productName = "gob-swift-eval";
-			productReference = 18FB3B781C80507000017D1E /* gob-swift-eval.app */;
+			productReference = 18FB3B781C80507000017D1E /* RemoteControl.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -129,7 +129,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 18FB3B731C80507000017D1E /* Build configuration list for PBXProject "gob-swift-eval" */;
+			buildConfigurationList = 18FB3B731C80507000017D1E /* Build configuration list for PBXProject "RemoteControl" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -142,7 +142,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				18FB3B771C80507000017D1E /* gob-swift-eval */,
+				18FB3B771C80507000017D1E /* RemoteControl */,
 			);
 		};
 /* End PBXProject section */
@@ -287,7 +287,7 @@
 				INFOPLIST_FILE = "gob-swift-eval/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.deladonchamps.gob-swift-eval";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = RemoteControl;
 			};
 			name = Debug;
 		};
@@ -302,14 +302,14 @@
 				INFOPLIST_FILE = "gob-swift-eval/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.deladonchamps.gob-swift-eval";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = RemoteControl;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		18FB3B731C80507000017D1E /* Build configuration list for PBXProject "gob-swift-eval" */ = {
+		18FB3B731C80507000017D1E /* Build configuration list for PBXProject "RemoteControl" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				18FB3B881C80507000017D1E /* Debug */,
@@ -318,7 +318,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		18FB3B8A1C80507000017D1E /* Build configuration list for PBXNativeTarget "gob-swift-eval" */ = {
+		18FB3B8A1C80507000017D1E /* Build configuration list for PBXNativeTarget "RemoteControl" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				18FB3B8B1C80507000017D1E /* Debug */,
