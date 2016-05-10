@@ -10,24 +10,26 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class ViewController: UIViewController, CustomLocationManagerDelegate, MKMapViewDelegate {
+class ViewController: UIViewController, CustomLocationManagerDelegate, CustomPedometerDelegate, MKMapViewDelegate {
 
     let regionRadius: CLLocationDistance = 1000
+    
     var locationManager: CustomLocationManager?
+    
     var userLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 48.872473, longitude: 2.387603)
+    
     var userPoint: MKPointAnnotation = MKPointAnnotation()
     var mainButtonMode: String = "add"
 
     //----
     let customPedometer: CustomPedometer = CustomPedometer(useNatif: false)
-    
     //----
     struct defaultsKeys {
         static let keyOne = "test 1"
         static let keyTwo = "test 2"
     }
-    
     //----
+    
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var deposeButton: UIButton!
     
@@ -41,7 +43,7 @@ class ViewController: UIViewController, CustomLocationManagerDelegate, MKMapView
 
         // LocationManager
         self.locationManager = CustomLocationManager(useNatif: false)
-        self.locationManager?.delegate = self
+        self.locationManager?.delegate = self   //_________
         self.locationManager?.start()
 
         // Map
@@ -54,8 +56,11 @@ class ViewController: UIViewController, CustomLocationManagerDelegate, MKMapView
         self.userPoint.subtitle = "That's you !"
         self.mapView.addAnnotation(self.userPoint)
         
-        // Pedometer
+        
+        // Pedometer    //__________
         let steps = self.customPedometer.getPedometerData(NSDate(), toDate: NSDate()).numberOfSteps
+        self.customPedometer.delegate = self
+
         print("steps :", steps);
 
     }
@@ -88,8 +93,8 @@ class ViewController: UIViewController, CustomLocationManagerDelegate, MKMapView
     
     
     
-    // MARK: -ProgressBar and Index
-    func progress(){
+    // MARK: -ProgressBar and Index     //___
+    func progress(data:NSNumber){
         let progress = self.progressBar.frame
         var p = self.progressBar.frame
         
@@ -97,7 +102,7 @@ class ViewController: UIViewController, CustomLocationManagerDelegate, MKMapView
         let maxY = container.height
         
         // 1000 = nomberOfstep until 100%
-        var ped = CGFloat(3200)
+        var ped = CGFloat(data)
         
         let index = CGFloat(ped/1000 - ((ped%1000)/1000))
         
@@ -105,8 +110,8 @@ class ViewController: UIViewController, CustomLocationManagerDelegate, MKMapView
         p.origin.y = maxY - (( ped * maxY) / 1000)
         
         
-        print(ped)
-        print(index)
+        print("ped", ped)
+        print("index", index)
         
         let indexString = "\(index)"
         self.indexLabel.text = indexString
@@ -117,27 +122,9 @@ class ViewController: UIViewController, CustomLocationManagerDelegate, MKMapView
     }
     
     
-    
-    // MARK: -Save Values
-    func saveValue (){
-        
-        // ---- Tuto fpr save value on locals ----
-        
-        //let defaults = NSUserDefaults.standardUserDefaults()
-        //defaults.setValue("Some String Value", forKey: defaultsKeys.keyOne)
-        //defaults.setValue("Another String Value", forKey: defaultsKeys.keyTwo)
-        //defaults.synchronize()
-        //get string
-        //let stringOne = defaults.stringForKey(defaultsKeys.keyOne)
-        //print(stringOne) // Some String Value
-        //let stringTwo = defaults.stringForKey(defaultsKeys.keyTwo)
-        //print(stringTwo) // Another String Value
-        
-    }
-    
-    
     // MARK: -PostData
     func upload_request(){
+        // recup data
         
         let url:NSURL = NSURL(string: "http://localhost:9000/locationDataSend/")!
         
@@ -193,14 +180,12 @@ class ViewController: UIViewController, CustomLocationManagerDelegate, MKMapView
             // Do nothing
         }
         
-        progress()  // ------>  FOR TEST
+        
     }
     
     
-    
-    // MARK: - LocationDelegate
-    func customLocationManager(manager: CustomLocationManager, didUpdateLocations locations: [CLLocation])
-    {
+    // MARK: - LocationDelegate     //___
+    func customLocationManager(manager: CustomLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations[0].coordinate
         // print("location udated \(location.latitude) - \(location.longitude)")
         self.userLocation = locations[0].coordinate
@@ -210,8 +195,7 @@ class ViewController: UIViewController, CustomLocationManagerDelegate, MKMapView
         self.userPoint.coordinate = location
     }
     
-    func customLocationManagerDidGetAuthorization(manager: CustomLocationManager)
-    {
+    func customLocationManagerDidGetAuthorization(manager: CustomLocationManager) {
         self.locationManager?.startUpdateCustomLocation()
     }
     
@@ -235,6 +219,7 @@ class ViewController: UIViewController, CustomLocationManagerDelegate, MKMapView
         return nil
     }
     
+    
     func mapView(mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
 //        print("\(mapView.centerCoordinate.latitude) - \(mapView.centerCoordinate.longitude)")
         let centerCoord = mapView.centerCoordinate
@@ -257,6 +242,11 @@ class ViewController: UIViewController, CustomLocationManagerDelegate, MKMapView
         self.setButtonMode("transit")
     }
     
+    func returnData(data: NSNumber) {
+        //cumulate the steps
+        progress(data);
+        
+    }
     
     
 }

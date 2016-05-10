@@ -14,8 +14,10 @@ class CustomLocationManager : NSObject, CLLocationManagerDelegate {
     var natifLocationManager: CLLocationManager?
     var natifLocationManagerStatus: CLAuthorizationStatus? = nil
     var currentFakeLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 48.872473, longitude: 2.387603)
+    
     var socket = Socket.sharedInstance
     weak var delegate: ViewController?
+    
     weak var timer = NSTimer()
     
     init (useNatif:Bool) {
@@ -33,7 +35,7 @@ class CustomLocationManager : NSObject, CLLocationManagerDelegate {
             }
         } else {
             
-            self.socket.io.on("UPDATE_ME_POSITION") {data, ack in
+            self.socket.io.on("UPDATE_ME_POSITION") { data, ack in
                 let first = data[0] as! NSMutableDictionary
                 var dict = [String : Any]()
                 for (key, value) in first {
@@ -94,25 +96,22 @@ class CustomLocationManager : NSObject, CLLocationManagerDelegate {
     }
     
     // MARK: CLLocationManager Protocol
-    
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus)
-    {
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         self.natifLocationManagerStatus = status
         self.delegate?.customLocationManagerDidGetAuthorization(self)
     }
     
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
-    {
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         self.customLocationUpdate(locations)
     }
     
 }
 
-// MARK: CustomLocationManagerDelegate
+    // MARK: CustomLocationManagerDelegate
+    protocol CustomLocationManagerDelegate: class {
+        // On location update
+        func customLocationManager(manager: CustomLocationManager, didUpdateLocations locations: [CLLocation])
+        // On authorized
+        func customLocationManagerDidGetAuthorization(manager: CustomLocationManager)
+    }
 
-protocol CustomLocationManagerDelegate: class {
-    // On location update
-    func customLocationManager(manager: CustomLocationManager, didUpdateLocations locations: [CLLocation])
-    // On authorized
-    func customLocationManagerDidGetAuthorization(manager: CustomLocationManager)
-}

@@ -14,7 +14,7 @@ class Socket {
     
     static let sharedInstance = Socket()
     
-    let io = SocketIOClient(socketURL: NSURL(string: "http://192.168.2.1:8000")!, options: [.Log(false), .ForcePolling(true)])
+    let io = SocketIOClient(socketURL: NSURL(string: "http://localhost:8000")!, options: [.Log(false), .ForcePolling(true)])
     
     init() {
         self.io.on("connect") {data, ack in

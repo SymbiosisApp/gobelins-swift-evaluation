@@ -31,8 +31,9 @@ class CustomPedometerData {
     }
 }
 
-
 class CustomPedometer {
+    var socket = Socket.sharedInstance
+    weak var delegate: ViewController?
     
     let useNatif: Bool
     var natifPedometer: CMPedometer? = nil
@@ -40,7 +41,6 @@ class CustomPedometer {
     init(useNatif: Bool){
         self.useNatif = useNatif
     }
-    
     
     func getPedometerData (fromDate: NSDate, toDate: NSDate) -> CustomPedometerData {
         
@@ -73,6 +73,12 @@ class CustomPedometer {
             
         }else {
             
+            //USE Socket
+            self.socket.io.on("UPDATE_PEDOMETER") { data, ack in
+                //print(data);
+                let step = data[0].integerValue;
+                self.delegate?.returnData(step);
+            }
             
             //Get DATA
             let data = NSData(contentsOfURL: NSURL(string: "http://127.0.0.1:8080/pedometerData/")!)
@@ -93,8 +99,6 @@ class CustomPedometer {
                             print(item["floorsAscended"]!!.integerValue);
                             print(item["floorsDescended"]!!.integerValue);
                             print("-----------------");
-                            
-                            
                             
                             numberOfSteps = item["numberOfSteps"]!!.integerValue
                             distance = 10
@@ -124,7 +128,13 @@ class CustomPedometer {
         
     }
     
-    
-    
 }
+
+    // MARK: CustomPedometerDelegate
+    protocol CustomPedometerDelegate: class {
+        func returnData(data:NSNumber)
+        
+    }
+
+
 
