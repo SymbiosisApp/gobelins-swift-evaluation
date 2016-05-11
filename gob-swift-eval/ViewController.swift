@@ -124,22 +124,20 @@ class ViewController: UIViewController, CustomLocationManagerDelegate, CustomPed
     
     // MARK: -PostData
     func upload_request(){
-        // recup data
         
-        let url:NSURL = NSURL(string: "http://localhost:9000/locationDataSend/")!
+        let url:NSURL = NSURL(string: "http://localhost:8080/graines/")!
         
         let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "POST"
         
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        let dictionaryData : [String:AnyObject] = ["id":1908098989,
-            "nom":"yolo",
-            "prenom":"yolo2",
-            "couleur":1908098980,
-            "date": "2016-11-11",
-            "longitude":1908098980,
-            "latitude":1908098980]
+        let dictionaryData : [String:AnyObject] = [
+            "latitude":48.6962578192132,
+            "longitude":-97.8127746582031,
+            "nom":"DUMAS",
+            "date":"2016-11-11",
+            "parent":1]
         var data = NSData()
         
         do{
@@ -179,7 +177,6 @@ class ViewController: UIViewController, CustomLocationManagerDelegate, CustomPed
         if mode == "center" {
             // Do nothing
         }
-        
         
     }
     

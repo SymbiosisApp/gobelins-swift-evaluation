@@ -75,10 +75,12 @@ class CustomPedometer {
             
             //USE Socket
             self.socket.io.on("UPDATE_PEDOMETER") { data, ack in
-                //print(data);
+
                 let step = data[0].integerValue;
                 self.delegate?.returnData(step);
             }
+            
+            //TODO AnyObject to NSDATA
             
             //Get DATA
             let data = NSData(contentsOfURL: NSURL(string: "http://127.0.0.1:8080/pedometerData/")!)
@@ -89,7 +91,6 @@ class CustomPedometer {
                 
                 do {
                     jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: [])
-                    //print(jsonResult[0])
                     
                     if let items = jsonResult as? NSArray {
                         for item in items {
@@ -98,7 +99,6 @@ class CustomPedometer {
                             print(item["currentCadence"]!!.integerValue);
                             print(item["floorsAscended"]!!.integerValue);
                             print(item["floorsDescended"]!!.integerValue);
-                            print("-----------------");
                             
                             numberOfSteps = item["numberOfSteps"]!!.integerValue
                             distance = 10
