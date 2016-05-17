@@ -1,5 +1,4 @@
-# iOS Dev
+# Deprecated !
 
-> **iOS Dev** - Evaluation  
-> DDI 2015-2016  
-> Gobelins, l'école de l'image  
+> This was a work repo.  
+> The content of this repo is now in [SymbiosisApp/app-iOS](https://github.com/SymbiosisApp/app-iOS)
