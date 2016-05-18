@@ -9,7 +9,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="gob_swift_eval" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="RemoteControl" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -80,7 +80,7 @@
         <!--Login View Controller-->
         <scene sceneID="S78-i7-BPE">
             <objects>
-                <viewController id="y84-TA-DRF" customClass="LoginViewController" customModule="gob_swift_eval" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="y84-TA-DRF" customClass="LoginViewController" customModule="RemoteControl" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nTe-Lw-PhX"/>
                         <viewControllerLayoutGuide type="bottom" id="QUm-ov-VG2"/>

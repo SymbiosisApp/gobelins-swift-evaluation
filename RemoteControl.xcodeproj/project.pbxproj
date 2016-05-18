@@ -18,6 +18,7 @@
 		18FB3B8E1C80AA4F00017D1E /* CustomLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FB3B8D1C80AA4F00017D1E /* CustomLocationManager.swift */; };
 		66A1617B1CEB38B60003C038 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1617A1CEB38B60003C038 /* LoginController.swift */; };
 		66A1617D1CEB3DAC0003C038 /* loginBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 66A1617C1CEB3DAC0003C038 /* loginBackground.png */; };
+		66D9D11C1CEC56620032C68F /* UserSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D9D11B1CEC56620032C68F /* UserSingleton.swift */; };
 		66E417181CA182A2004A9ADD /* Pedometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E417171CA182A2004A9ADD /* Pedometer.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +49,7 @@
 		18FB3B8D1C80AA4F00017D1E /* CustomLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLocationManager.swift; sourceTree = "<group>"; };
 		66A1617A1CEB38B60003C038 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		66A1617C1CEB3DAC0003C038 /* loginBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginBackground.png; sourceTree = "<group>"; };
+		66D9D11B1CEC56620032C68F /* UserSingleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSingleton.swift; sourceTree = "<group>"; };
 		66E417171CA182A2004A9ADD /* Pedometer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pedometer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -94,6 +96,7 @@
 				18FB3B871C80507000017D1E /* Info.plist */,
 				66E417171CA182A2004A9ADD /* Pedometer.swift */,
 				66A1617A1CEB38B60003C038 /* LoginController.swift */,
+				66D9D11B1CEC56620032C68F /* UserSingleton.swift */,
 			);
 			path = "gob-swift-eval";
 			sourceTree = "<group>";
@@ -184,6 +187,7 @@
 				66A1617B1CEB38B60003C038 /* LoginController.swift in Sources */,
 				66E417181CA182A2004A9ADD /* Pedometer.swift in Sources */,
 				18FB3B7E1C80507000017D1E /* ViewController.swift in Sources */,
+				66D9D11C1CEC56620032C68F /* UserSingleton.swift in Sources */,
 				18FB3B8E1C80AA4F00017D1E /* CustomLocationManager.swift in Sources */,
 				18FB3B7C1C80507000017D1E /* AppDelegate.swift in Sources */,
 			);

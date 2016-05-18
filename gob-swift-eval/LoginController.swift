@@ -15,19 +15,23 @@ class LoginViewController: UIViewController{
     @IBOutlet var mdp: UITextField!
     @IBOutlet var birthday: UITextField!
     
+    let user = UserSingleton.sharedInstance;
+
     override func viewDidLoad() {
         super.viewDidLoad()
         assignbackground("loginBackground.png")
-        let data:NSDictionary = UserSingleton.sharedInstance.getUserData();
         
-        //TODO if isset if -> show other viewcontroller
-        let id:Int = Int(UserSingleton.sharedInstance.getUserData()["userId"]! as! NSNumber);
-        if(id != 0){
-            //print(getData("http://localhost:8080/users/id=\(id)&param=all"));
+        //if isset login
+        if(self.user.getUserData()["userId"] != nil){
+            let id:Int = Int(self.user.getUserData()["userId"]! as! NSNumber);
+            
+            print(getData("http://localhost:8080/users/id=\(id)&param=all"));
+            
             dispatch_async(dispatch_get_main_queue()) {
                 self.performSegueWithIdentifier("login", sender: self)
             }
         }
+    
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -87,7 +91,7 @@ class LoginViewController: UIViewController{
                     if let dataResponse = httpResponse.allHeaderFields["Data"] as? String {
                         
                         //TODO add ASYNCHRONOUS
-                        UserSingleton.sharedInstance.setUserData(Int(dataResponse)!, pseudo: self.pseudo.text!, date: self.birthday.text!, email: self.email.text!, mdp: self.mdp.text!)
+                        self.user.setUserData(Int(dataResponse)!, pseudo: self.pseudo.text!, date: self.birthday.text!, email: self.email.text!, mdp: self.mdp.text!)
                         print(UserSingleton.sharedInstance.getUserData());
 
                     }
@@ -112,44 +116,5 @@ class LoginViewController: UIViewController{
         return jsonResult
     }
 
-    
 }
 
-
-//Persist Data
-class UserSingleton {
-    static let sharedInstance = UserSingleton()
-    
-    //let defaults:NSUserDefaults;
-    let defaults = NSUserDefaults.standardUserDefaults();
-    var data:[String:AnyObject] = [:];
-
-    private init() {
-        print(self.getUserData());
-    }
-    
-    func getUserData() ->NSDictionary {
-        self.data = [
-            "userId":defaults.integerForKey("identifiant"),
-            "userParent":defaults.integerForKey("parent"),
-            "userPseudo":defaults.stringForKey("pseudo")!,
-            "userDate": defaults.stringForKey("date")!,
-            "email":defaults.stringForKey("email")!,
-            "mdp":defaults.stringForKey("mdp")!
-        ]
-        return self.data
-    }
-    
-    func setUserParent(parent: Int) {
-        self.defaults.setObject(parent, forKey: "parent")
-    }
-    
-    func setUserData(id: Int, pseudo: String, date:String, email:String, mdp:String) {
-        self.defaults.setObject(id, forKey: "identifiant")
-        self.defaults.setObject(pseudo, forKey: "pseudo")
-        self.defaults.setObject(date, forKey: "date")
-        self.defaults.setObject(email, forKey: "email")
-        self.defaults.setObject(mdp, forKey: "mdp")
-    }
-    
-}
