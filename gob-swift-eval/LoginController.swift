@@ -50,6 +50,9 @@ class LoginViewController: UIViewController{
                 "mdp":mdp.text!
             ]
             postData(data, url: "http://localhost:8080/user/");
+            
+            //TODO post userParent
+            //self.user.setUserData(Int(parent))
         }
     }
     
