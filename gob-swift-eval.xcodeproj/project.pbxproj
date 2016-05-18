@@ -16,6 +16,8 @@
 		18FB3B831C80507000017D1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18FB3B821C80507000017D1E /* Assets.xcassets */; };
 		18FB3B861C80507000017D1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18FB3B841C80507000017D1E /* LaunchScreen.storyboard */; };
 		18FB3B8E1C80AA4F00017D1E /* CustomLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FB3B8D1C80AA4F00017D1E /* CustomLocationManager.swift */; };
+		66A1617B1CEB38B60003C038 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1617A1CEB38B60003C038 /* LoginController.swift */; };
+		66A1617D1CEB3DAC0003C038 /* loginBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 66A1617C1CEB3DAC0003C038 /* loginBackground.png */; };
 		66E417181CA182A2004A9ADD /* Pedometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E417171CA182A2004A9ADD /* Pedometer.swift */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +46,8 @@
 		18FB3B851C80507000017D1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18FB3B871C80507000017D1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18FB3B8D1C80AA4F00017D1E /* CustomLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLocationManager.swift; sourceTree = "<group>"; };
+		66A1617A1CEB38B60003C038 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		66A1617C1CEB3DAC0003C038 /* loginBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginBackground.png; sourceTree = "<group>"; };
 		66E417171CA182A2004A9ADD /* Pedometer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pedometer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,6 +83,7 @@
 		18FB3B7A1C80507000017D1E /* gob-swift-eval */ = {
 			isa = PBXGroup;
 			children = (
+				66A161791CEB38810003C038 /* assets */,
 				18FB3B7B1C80507000017D1E /* AppDelegate.swift */,
 				18FB3B7D1C80507000017D1E /* ViewController.swift */,
 				183CCD3C1CA3F4BB00FB171D /* SocketSingleton.swift */,
@@ -88,8 +93,17 @@
 				18FB3B841C80507000017D1E /* LaunchScreen.storyboard */,
 				18FB3B871C80507000017D1E /* Info.plist */,
 				66E417171CA182A2004A9ADD /* Pedometer.swift */,
+				66A1617A1CEB38B60003C038 /* LoginController.swift */,
 			);
 			path = "gob-swift-eval";
+			sourceTree = "<group>";
+		};
+		66A161791CEB38810003C038 /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				66A1617C1CEB3DAC0003C038 /* loginBackground.png */,
+			);
+			name = assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,6 +169,7 @@
 				18FB3B861C80507000017D1E /* LaunchScreen.storyboard in Resources */,
 				18FB3B831C80507000017D1E /* Assets.xcassets in Resources */,
 				18FB3B811C80507000017D1E /* Main.storyboard in Resources */,
+				66A1617D1CEB3DAC0003C038 /* loginBackground.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,6 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				183CCD3D1CA3F4BB00FB171D /* SocketSingleton.swift in Sources */,
+				66A1617B1CEB38B60003C038 /* LoginController.swift in Sources */,
 				66E417181CA182A2004A9ADD /* Pedometer.swift in Sources */,
 				18FB3B7E1C80507000017D1E /* ViewController.swift in Sources */,
 				18FB3B8E1C80AA4F00017D1E /* CustomLocationManager.swift in Sources */,

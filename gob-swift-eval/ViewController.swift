@@ -21,22 +21,22 @@ class ViewController: UIViewController, CustomLocationManagerDelegate, CustomPed
     var userPoint: MKPointAnnotation = MKPointAnnotation()
     var mainButtonMode: String = "add"
 
-    //----
+    //----Pedometer
     let customPedometer: CustomPedometer = CustomPedometer(useNatif: false)
-    //----
-    struct defaultsKeys {
-        static let keyOne = "test 1"
-        static let keyTwo = "test 2"
-    }
-    //----
     
+    //----Map
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var deposeButton: UIButton!
     
-    //----
+    //----ProgressBar
     @IBOutlet weak var progressBar: UIView!
     @IBOutlet weak var progressContainer: UIView!
     @IBOutlet weak var indexLabel: UILabel!
+    
+    //----Login
+    
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -218,7 +218,7 @@ class ViewController: UIViewController, CustomLocationManagerDelegate, CustomPed
     
     
     func mapView(mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-//        print("\(mapView.centerCoordinate.latitude) - \(mapView.centerCoordinate.longitude)")
+        // print("\(mapView.centerCoordinate.latitude) - \(mapView.centerCoordinate.longitude)")
         let centerCoord = mapView.centerCoordinate
         let userCoord = CLLocation(latitude: self.userLocation.latitude, longitude: self.userLocation.longitude)
         let test = CLLocation(latitude: centerCoord.latitude, longitude: centerCoord.longitude)
@@ -233,17 +233,19 @@ class ViewController: UIViewController, CustomLocationManagerDelegate, CustomPed
     }
     
     func mapView(mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
-//        print("------ \(mapView.centerCoordinate.latitude) - \(mapView.centerCoordinate.longitude)")
-//        print("change region")
+        // print("------ \(mapView.centerCoordinate.latitude) - \(mapView.centerCoordinate.longitude)")
+        // print("change region")
         
         self.setButtonMode("transit")
     }
     
     func returnData(data: NSNumber) {
-        //cumulate the steps
+        //cumulate the steps and if == 5000; count = 0 and push notifacation
         progress(data);
-        
     }
+    
+    
+    
     
     
 }
